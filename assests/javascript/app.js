@@ -1,10 +1,10 @@
 // Initial array of
-var movies = ["Spider-Man", "Avengers: Infinity War", "Aquaman", "Black Panther", "The Lion King"];
+var itmes = ["Spider-Man", "Avengers: Infinity War", "Aquaman", "Black Panther", "The Lion King"];
 
 $(document).ready(function(){
 
 
- // Function for displaying button
+ // Function for displaying movie data
  function renderButtons() {
 
     // Deleting the movie buttons prior to adding new movie buttons
@@ -12,7 +12,7 @@ $(document).ready(function(){
      $("#movies-view").empty();
 
     // Looping through the array of movies
-    for (var i = 0; i < movies.length; i++) {
+    for (var i = 0; i < itmes.length; i++) {
 
       
       // Then dynamicaly generating buttons for each movie in the array.
@@ -21,9 +21,9 @@ $(document).ready(function(){
       // Adding a class
       a.addClass("movie");
       // Adding a data-attribute with a value of the movie at index i
-      a.attr("data-name", movies[i]);
+      a.attr("data-name", itmes[i]);
       // Providing the button's text with a value of the movie at index i
-      a.text(movies[i]);
+      a.text(itmes[i]);
       // Adding the button to the HTML
       $("#movies-view").append(a);
     }
@@ -36,9 +36,9 @@ $(document).ready(function(){
     event.preventDefault();
 
     // This line will grab the text from the input box
-    var movie = $("#movie-input").val().trim();
+    var inputRequest = $("#movie-input").val().trim();
     // The movie from the textbox is then added to our array
-    movies.push(movie);
+    itmes.push(inputRequest);
 
     // calling renderButtons which handles the processing of our movie array
     renderButtons();
