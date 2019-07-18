@@ -1,0 +1,31 @@
+button,
+div,
+form,
+input, .row {
+  margin: 10px;
+}
+
+/* #row1{
+
+  background-color: blue;
+} */
+
+#row2 {
+  background-color: antiquewhite;
+  float: left;
+}
+
+#row3 {
+  background-color: aquamarine;
+  float: right;
+}
+
+#col1 {
+  background-color: black;
+  color: white;
+}
+
+#col2 {
+  background-color: rgb(228, 122, 122);
+  color: black;
+}
