@@ -18,6 +18,8 @@ input, .row {
 #row3 {
   background-color: aquamarine;
   float: right;
+  background-image: url("../images/placeimg.jpg");
+  color: white;
 }
 
 #col1 {
@@ -29,3 +31,22 @@ input, .row {
   background-color: rgb(228, 122, 122);
   color: black;
 }
+
+#add-movie, #row3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 10px  15px;
+   border: none;
+  border-radius: 15px;
+  /* box-shadow: 0 9px #999; */
+}
+
+.btnstyle:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+.btnstyle:hover {background-color: #3e8e41}
+
+
