@@ -1,23 +1,22 @@
 // Initial array of
 var topics = ["Movies", "Games", "Videos", "Basketball", "Birds"];
-var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=basketball&limit=10&offset=0&rating=G&lang=en"
 
 
 
-$(document).ready(function(){
+$(document).ready(function () {
 
 
- // Function for displaying topics data
- function renderButtons() {
+  // Function for displaying topics data
+  function renderButtons() {
 
     // Deleting the topics buttons prior to adding new topics buttons
     // (this is necessary otherwise we will have repeat buttons)
-     $("#topics-view").empty();
+    $("#topics-view").empty();
 
     // Looping through the array of topics
     for (var i = 0; i < topics.length; i++) {
 
-      
+
       // Then dynamicaly generating buttons for each topics in the array.
       // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
       var a = $("<button>");
@@ -32,14 +31,14 @@ $(document).ready(function(){
     }
   }
 
-  // This function handles events where one button is clicked
-  $("#add-movie").on("click", function(event) {
+  // This function handles events to add the button if clicked 
+  $("#add-topic").on("click", function (event) {
     // event.preventDefault() prevents the form from trying to submit itself.
     // We're using a form so that the user can hit enter instead of clicking the button if they want
     event.preventDefault();
 
     // This line will grab the text from the input box
-    var inputRequest = $("#movie-input").val().trim();
+    var inputRequest = $("#topic-input").val().trim();
     // The topics from the textbox is then added to our array
     topics.push(inputRequest);
 
@@ -47,18 +46,37 @@ $(document).ready(function(){
     renderButtons();
   });
 
+  function alertTopicName() {
+    
+    var topicName = $(this).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=10&offset=0&rating=G&lang=en"
+
+
+
+    alert("Button click to request topic " + topicName);
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response)
+      console.log(JSON.stringify(response))
+
+    });
+
+  };
+
+  // Function for displaying the topic info
+  // adding a click event listener to all elements with the class "topic"
+  // adding the event listener to the document because it will work for dynamically generated elements
+  // $(".movies").on("click") will only add listeners to elements that are on the page at that time
+
+  $(document).on("click", ".chooses", alertTopicName);
+
   // Calling the renderButtons function at least once to display the initial list of topics
   renderButtons();
 
 });
 
-//ajax call to retrieve the data from giphy.com query
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-    console.log(response)
-    
-  });
 
-  
+

@@ -5,48 +5,50 @@ input, .row {
   margin: 10px;
 }
 
-/* #row1{
+ #row1, body {
+  background-image: url("../images/placeimg.jpg");
 
-  background-color: blue;
-} */
-
+ }
 #row2 {
   background-color: antiquewhite;
+  height: 200%;
   float: left;
 }
 
 #row3 {
-  background-color: aquamarine;
   float: right;
-  background-image: url("../images/placeimg.jpg");
+  /* background-image: url("../images/placeimg.jpg"); */
   color: white;
-}
+  }
 
 #col1 {
   background-color: black;
   color: white;
 }
 
-#col2 {
-  background-color: rgb(228, 122, 122);
-  color: black;
-}
-
-#add-movie, #row3 {
+#add-topic, #row3, #topic-input {
   margin-bottom: 10px;
   font-size: 15px;
-  padding: 10px  15px;
-   border: none;
+  padding: 5px  10px;
+  border: none;
   border-radius: 15px;
   /* box-shadow: 0 9px #999; */
 }
 
+.btnstyle {
+
+  background-color: white; 
+  color: black; 
+ 
+}
+
+.btnstyle:hover {
+  background-color: black;
+  color: white;
+}
+
 .btnstyle:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-
-.btnstyle:hover {background-color: #3e8e41}
-
-
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
