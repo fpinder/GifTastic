@@ -1,31 +1,34 @@
 // Initial array of
-var itmes = ["Spider-Man", "Avengers: Infinity War", "Aquaman", "Black Panther", "The Lion King"];
+var topics = ["Movies", "Games", "Videos", "Basketball", "Birds"];
+var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=basketball&limit=10&offset=0&rating=G&lang=en"
+
+
 
 $(document).ready(function(){
 
 
- // Function for displaying movie data
+ // Function for displaying topics data
  function renderButtons() {
 
-    // Deleting the movie buttons prior to adding new movie buttons
+    // Deleting the topics buttons prior to adding new topics buttons
     // (this is necessary otherwise we will have repeat buttons)
-     $("#movies-view").empty();
+     $("#topics-view").empty();
 
-    // Looping through the array of movies
-    for (var i = 0; i < itmes.length; i++) {
+    // Looping through the array of topics
+    for (var i = 0; i < topics.length; i++) {
 
       
-      // Then dynamicaly generating buttons for each movie in the array.
+      // Then dynamicaly generating buttons for each topics in the array.
       // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
       var a = $("<button>");
       // Adding a class
-      a.addClass("movie");
-      // Adding a data-attribute with a value of the movie at index i
-      a.attr("data-name", itmes[i]);
-      // Providing the button's text with a value of the movie at index i
-      a.text(itmes[i]);
+      a.addClass("chooses");
+      // Adding a data-attribute with a value of the topics at index i
+      a.attr("data-name", topics[i]);
+      // Providing the button's text with a value of the topics at index i
+      a.text(topics[i]);
       // Adding the button to the HTML
-      $("#movies-view").append(a);
+      $("#topics-view").append(a);
     }
   }
 
@@ -37,14 +40,25 @@ $(document).ready(function(){
 
     // This line will grab the text from the input box
     var inputRequest = $("#movie-input").val().trim();
-    // The movie from the textbox is then added to our array
-    itmes.push(inputRequest);
+    // The topics from the textbox is then added to our array
+    topics.push(inputRequest);
 
-    // calling renderButtons which handles the processing of our movie array
+    // calling renderButtons which handles the processing of our topics array
     renderButtons();
   });
 
-  // Calling the renderButtons function at least once to display the initial list of movies
+  // Calling the renderButtons function at least once to display the initial list of topics
   renderButtons();
 
 });
+
+//ajax call to retrieve the data from giphy.com query
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+    console.log(response)
+    
+  });
+
+  
