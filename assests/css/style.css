@@ -2,29 +2,23 @@ button,
 div,
 form,
 input, .row {
-  margin: 10px;
+  margin: 5px;
 }
 
- #row1, body {
+  body {
   background-image: url("../images/placeimg.jpg");
 
  }
 #row2 {
-  background-color: antiquewhite;
-  height: 200%;
+ 
   float: left;
 }
 
 #row3 {
   float: right;
-  /* background-image: url("../images/placeimg.jpg"); */
   color: white;
   }
 
-#col1 {
-  background-color: black;
-  color: white;
-}
 
 #add-topic, #row3, #topic-input {
   margin-bottom: 10px;
@@ -52,3 +46,16 @@ input, .row {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+  max-width: 150px;
+  height: 150px;
+  margin: 5px;
+
+}
+
+

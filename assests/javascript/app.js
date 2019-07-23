@@ -47,13 +47,13 @@ $(document).ready(function () {
   });
 
   function alertTopicName() {
-    
+
     var topicName = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=10&offset=0&rating=G&lang=en"
+
+    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=2&offset=0&rating=G&lang=en"
 
 
-
-    alert("Button click to request topic " + topicName);
+    // alert("Button click to request topic " + topicName);
 
     $.ajax({
       url: queryURL,
@@ -61,8 +61,38 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response)
       console.log(JSON.stringify(response))
+      var searchGiphy = response.data;
 
+      for (i = 0; i < searchGiphy.length; i++) {
+        var urlShowStill = response.data[i].images.original_still.url;
+        var urlShowOriginal = response.data[i].images.original.url;
+
+        console.log("STILL uRL " + urlShowStill + " data-still=" + urlShowOriginal);
+        console.log("Original Animated " + urlShowOriginal);
+
+        // $('#row2').append("<img src ='" + urlShowOriginal + "'>")
+
+        $('#row2').append("<img src ='" + urlShowStill + "' data-still='" + urlShowStill + "' data-animate='" + urlShowOriginal + "' data-state='still' class='gif' >")
+
+      }
     });
+
+    $(".gif").on("click", function () {
+         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+      var state = $(this).attr("data-state");
+      console.log("the state is " + state)
+      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+      // Then, set the image's data-state to animate
+      // Else set src to the data-still value
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+    });
+
 
   };
 
@@ -72,6 +102,7 @@ $(document).ready(function () {
   // $(".movies").on("click") will only add listeners to elements that are on the page at that time
 
   $(document).on("click", ".chooses", alertTopicName);
+
 
   // Calling the renderButtons function at least once to display the initial list of topics
   renderButtons();
