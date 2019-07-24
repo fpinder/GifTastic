@@ -10,8 +10,8 @@ input, .row {
 
  }
 #row2 {
- 
-  float: left;
+  display: flex;
+flex-wrap: wrap;
 }
 
 #row3 {
@@ -47,7 +47,7 @@ input, .row {
   transform: translateY(4px);
 }
 
-/* img {
+img {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
@@ -55,12 +55,18 @@ input, .row {
   max-width: 150px;
   height: 150px;
   margin: 5px;
-  float: right;
- } */
+  /* float: left; */
+ }
 
 .row {
 
   color: white;
 }
+
+p{
+  display: inline;
+}
+
+
 
 

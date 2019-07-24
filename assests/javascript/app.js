@@ -33,7 +33,7 @@ $(document).ready(function () {
 
   // This function handles events to add the button if clicked 
   $("#add-topic").on("click", function (event) {
-    // event.preventDefault() prevents the form from trying to submit itself.
+    // event.preventDefault() prevents the from trying to submit itself.
     // We're using a form so that the user can hit enter instead of clicking the button if they want
     event.preventDefault();
 
@@ -50,9 +50,9 @@ $(document).ready(function () {
 
     var topicName = $(this).attr("data-name");
 
-    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=2&offset=0&rating&lang=en"
+    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=10&offset=0&rating&lang=en"
 
-
+    // newDiv.empty();
     // alert("Button click to request topic " + topicName);
 
     $.ajax({
@@ -61,13 +61,12 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response)
       // console.log(JSON.stringify(response))
-
-      //var searchGiphy = response.data;
+     
 
       //Create a new div to hold the topics
       var newDiv = $("<div>");
 
-        for (i = 0; i < response.data.length; i++) {
+      for (i = 0; i < response.data.length; i++) {
         var searchGiphy = response.data[i];
 
         console.log("SearchGiphy " + searchGiphy)
@@ -79,6 +78,7 @@ $(document).ready(function () {
 
         //append the paragraph rating to the newDiv
         newDiv.append("<p> Rating: " + searchGiphy.rating + "</p>");
+       
 
         //new image element that will hold the gif image
         newImg = $("<img>");
@@ -99,6 +99,7 @@ $(document).ready(function () {
         newDiv.append(newImg)
 
         //appending/display the entire newDiv  with a rating and the image to the id="row2"
+        
         $('#row2').append(newDiv)
 
 
@@ -117,25 +118,22 @@ $(document).ready(function () {
         // $('#row2').append("<img src ='" + urlShowStill + "' data-still='" + urlShowStill + "' data-animate='" + urlShowOriginal + "' data-state='still' class='gif' >")
 
       }
-     
-    });
 
-    
-
-    $(".gif").on("click", function () {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      console.log(" in the click the state is " + state)
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
+      $(".gif").on("click", function () {
+        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        var state = $(this).attr("data-state");
+        console.log(" in the click the state is " + state)
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
     });
 
 
