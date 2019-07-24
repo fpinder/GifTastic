@@ -1,13 +1,13 @@
-<a href="https://fpinder.github.io/GifTastic/"><img src="https://github.com/fpinder/TriviaGame/blob/master/assets/images/Trivia.jpg" alt="Trivia Game"></a>
+<a href="https://fpinder.github.io/GifTastic/"><img src="https://github.com/fpinder/GifTastic/blob/master/assests/images/Capture.JPG" alt="GifTastic" width="100" height="100></a>
 
-# Trivia Game!!!
+# GifTastic!!!
 
 
-*This Trivia Game will give you the opportunity to answer some questions in 120 seconds; if you **don't answer the questions in 120 seconds** the game will end with a sound and your score will be 0*. 
+*This GifTastic will give you the opportunity to clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page **clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing** every gif, display its rating (PG, G, so on), you can request additional gifs to be added to the page.* 
 
-However, **if you do answer the questions** you will get a score and you will be provided with your correct, incorrect, and unuanswerd questions.
+The add topic form, **takes a value from a user input box and adds it to the topics array the** Allow users to request additional gifs to be added to the page.
 
-`I will alert you and let you know when you have` **30 seconds left** `on the Trivia Questions`.
+`Have a GifTastic time` **and Giphy away** `on the GifTastic page`.
 
 #
 Lincense by <a href="https://creativecommons.org/licenses/by/3.0/" rel="nofollow">CC-BY</a>
