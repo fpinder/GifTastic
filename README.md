@@ -1,4 +1,4 @@
-<a href="https://fpinder.github.io/GifTastic/"><img src="https://github.com/fpinder/GifTastic/blob/master/assests/images/Capture.JPG" alt="GifTastic" width="100" height="100></a>
+<a href="https://fpinder.github.io/GifTastic/"><img src="https://github.com/fpinder/GifTastic/blob/master/assests/images/Capture.JPG" alt="GifTastic"></a>
 
 # GifTastic!!!
 
