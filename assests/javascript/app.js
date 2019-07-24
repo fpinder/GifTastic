@@ -1,5 +1,5 @@
 // Initial array of
-var topics = ["Movies", "Games", "Videos", "Basketball", "Birds"];
+var topics = ["Movies", "Games", "Videos", "Basketball", "Birds", "Cars"];
 
 
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     var topicName = $(this).attr("data-name");
 
-    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=2&offset=0&rating=G&lang=en"
+    var queryURL = "https://api.giphy.com/v1/stickers/search?api_key=ctoGva5xUBLxP4kU9CE0lN3HHNAswGGB&q=" + topicName + "&limit=2&offset=0&rating&lang=en"
 
 
     // alert("Button click to request topic " + topicName);
@@ -60,27 +60,72 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response)
-      console.log(JSON.stringify(response))
-      var searchGiphy = response.data;
+      // console.log(JSON.stringify(response))
 
-      for (i = 0; i < searchGiphy.length; i++) {
-        var urlShowStill = response.data[i].images.original_still.url;
-        var urlShowOriginal = response.data[i].images.original.url;
+      //var searchGiphy = response.data;
 
-        console.log("STILL uRL " + urlShowStill + " data-still=" + urlShowOriginal);
-        console.log("Original Animated " + urlShowOriginal);
+      //Create a new div to hold the topics
+      var newDiv = $("<div>");
 
-        // $('#row2').append("<img src ='" + urlShowOriginal + "'>")
+        for (i = 0; i < response.data.length; i++) {
+        var searchGiphy = response.data[i];
 
-        $('#row2').append("<img src ='" + urlShowStill + "' data-still='" + urlShowStill + "' data-animate='" + urlShowOriginal + "' data-state='still' class='gif' >")
+        console.log("SearchGiphy " + searchGiphy)
+
+        //create a new div to hold the rating and gif
+        var newDiv = $("<div class='row'>");
+
+        console.log("New Rating: " + searchGiphy.rating)
+
+        //append the paragraph rating to the newDiv
+        newDiv.append("<p> Rating: " + searchGiphy.rating + "</p>");
+
+        //new image element that will hold the gif image
+        newImg = $("<img>");
+
+        //adding the elment to the image
+        //https://www.w3schools.com/tags/ref_standardattributes.asp
+        //https://www.w3schools.com/tags/att_global_data.asp
+
+        newImg.attr({
+          "src": searchGiphy.images.original_still.url,
+          "data-still": searchGiphy.images.original_still.url,
+          "data-animate": searchGiphy.images.original.url,
+          "data-state": "still",
+          "class": "gif"
+        });
+        console.log("original still " + searchGiphy.images.original_still.url)
+        // appending the image to the NewDiv
+        newDiv.append(newImg)
+
+        //appending/display the entire newDiv  with a rating and the image to the id="row2"
+        $('#row2').append(newDiv)
+
+
+        // var urlShowStill = response.data[i].images.original_still.url;
+        // var urlShowOriginal = response.data[i].images.original.url;
+        // var giphyRating = response.data[i].rating;
+
+        // console.log("Rating = " + giphyRating)
+        // console.log("STILL uRL " + urlShowStill + " data-still=" + urlShowOriginal);
+        // console.log("Original Animated " + urlShowOriginal);
+
+        // // $('#row2').append("<img src ='" + urlShowOriginal + "'>")
+
+        // $('.giphyText').append("Rating:  " + response.data[i].rating);
+
+        // $('#row2').append("<img src ='" + urlShowStill + "' data-still='" + urlShowStill + "' data-animate='" + urlShowOriginal + "' data-state='still' class='gif' >")
 
       }
+     
     });
 
+    
+
     $(".gif").on("click", function () {
-         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
       var state = $(this).attr("data-state");
-      console.log("the state is " + state)
+      console.log(" in the click the state is " + state)
       // If the clicked image's state is still, update its src attribute to what its data-animate value is.
       // Then, set the image's data-state to animate
       // Else set src to the data-still value
@@ -106,6 +151,7 @@ $(document).ready(function () {
 
   // Calling the renderButtons function at least once to display the initial list of topics
   renderButtons();
+
 
 });
 
