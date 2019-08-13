@@ -9,5 +9,7 @@ The add topic form, **takes a value from a user input box and adds it to the top
 
 `Have a GifTastic time` **and Giphy away** `on the GifTastic page`.
 
-#
+ #
+ <a href="https://fpinder.github.io/GifTastic/" rel="nofollow">GifTastic</a>
+
 Lincense by <a href="https://creativecommons.org/licenses/by/3.0/" rel="nofollow">CC-BY</a>
